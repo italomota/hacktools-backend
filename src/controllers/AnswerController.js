@@ -31,14 +31,12 @@ module.exports = {
   },
   async store (request, response) {
     const { questionnaire_id } = request.params
-    const { latitude, longitude, answer_details } = request.body
+    const { answer_details } = request.body
 
     const trx = await connection.transaction()
 
     try {
       const insertedIds = await trx('answers').insert({
-        latitude,
-        longitude,
         questionnaire_id
       })
 
