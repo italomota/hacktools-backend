@@ -6,6 +6,7 @@ const AnswerController = require('./controllers/AnswerController')
 const routes = express.Router()
 
 routes.get('/questionnaires', QuestionnaireController.index)
+routes.get('/questionnaires/:questionnaire_id', QuestionnaireController.show)
 routes.post('/questionnaires', QuestionnaireController.store)
 
 routes.get('/questionnaires/:questionnaire_id/answers', AnswerController.index)

@@ -9,6 +9,18 @@ module.exports = {
 
     return response.json(questionnaires)
   },
+  async show (request, response) {
+    const { questionnaire_id } = request.params
+
+    const questions = await connection('questions')
+      .where('questionnaire_id', questionnaire_id)
+      .select(
+        'id',
+        'description'
+      )
+
+    return response.json(questions)
+  },
   async store (request, response) {
     const { user } = request.headers
     const { title, questions } = request.body
