@@ -25,7 +25,7 @@ module.exports = {
   },
   async store (request, response) {
     const { questionnaire_id } = request.params
-    const { answer_details } = request.body
+    const answerDetails = request.body
 
     const trx = await connection.transaction()
 
@@ -36,7 +36,7 @@ module.exports = {
 
       const answerId = insertedIds[0]
 
-      const answerDetailsWithId = answer_details.map(({ question_id, description }) => ({
+      const answerDetailsWithId = answerDetails.map(({ question_id, description }) => ({
         answer_id: answerId,
         question_id,
         description
