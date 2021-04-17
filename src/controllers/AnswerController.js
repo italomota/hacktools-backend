@@ -2,16 +2,10 @@ const connection = require('../database/connection')
 
 module.exports = {
   async index (request, response) {
-    const { questionnaire_id } = request.query
-
-    if (!questionnaire_id) {
-      const answers = await connection('answers').select('id')
-
-      return response.json(answers)
-    }
+    const { questionnaire_id } = request.params
 
     const answers = await connection('answers')
-      .where('questionnaire_id', Number(questionnaire_id))
+      .where('questionnaire_id', questionnaire_id)
       .select('id')
 
     return response.json(answers)
