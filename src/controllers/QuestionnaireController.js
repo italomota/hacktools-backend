@@ -16,7 +16,7 @@ module.exports = {
       .where('questionnaire_id', questionnaire_id)
       .select(
         'id',
-        'description'
+        'description as question'
       )
 
     return response.json(questions)
